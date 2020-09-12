@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import HomePage from "../HomePage";
-import MovieDetail from "../MovieDetail";
-import PageNotFound from "../PageNotFound";
+import { HomePage, MovieDetail, PageNotFound } from "../index";
 
 export default function MyRouter() {
 	return (
@@ -22,7 +20,6 @@ export default function MyRouter() {
 					</ul>
 				</nav>
 
-				<div> hi fdsa</div>
 				<Switch>
 					<Route path="/detail/:movieid" exact component={MovieDetail}></Route>
 					<Route path="/" exact>
