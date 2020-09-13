@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { SearchBar, MovieTable, PaginationComp } from "../../components";
-import { api_key, api_url, first_str, page_number } from "../../constant";
+import { api_key, api_url, first_str, search_w_page } from "../../constant";
 import { Row, Col } from "reactstrap";
 
 export default function HomePage() {
@@ -11,7 +11,7 @@ export default function HomePage() {
 	const [activePage, setActivePage] = useState(3);
 
 	useEffect(() => {
-		Axios.get(api_url + api_key + user_input + page_number + activePage)
+		Axios.get(api_url + api_key + user_input + search_w_page + activePage)
 			.then((res) => {
 				setState(res.data);
 				setResultCount(res.data.totalResults);

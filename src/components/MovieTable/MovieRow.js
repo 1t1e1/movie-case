@@ -1,7 +1,7 @@
 import React from "react";
 import { Col } from "reactstrap";
 
-export default function MovieCard({ Title, Year, imdbID, index }) {
+export default function MovieRow({ Title, Year, imdbID, index }) {
 	return (
 		<tr>
 			<th scope="row">{index}</th>
