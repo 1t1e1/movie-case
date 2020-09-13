@@ -1,34 +1,38 @@
-import React from "react";
-import { Row, Table } from "reactstrap";
+import React, { useEffect } from "react";
+import { Table, ListGroupItem, Row } from "reactstrap";
 import MovieRow from "./MovieRow";
 
-export default function MovieList() {
-	// return (
-	// 	<Row>
-	// 		<MovieCard></MovieCard>
-	// 		<MovieCard></MovieCard>
-	// 		<MovieCard></MovieCard>
-	// 		<MovieCard></MovieCard>
-	// 	</Row>
-	// );
+export default function MovieList({ liste }) {
+	useEffect(() => {
+		console.log(liste);
+	});
+
 	return (
-		<Table dark>
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Movie Name</th>
-					<th>Year </th>
-					<th>Imdb id</th>
-				</tr>
-			</thead>
-			<tbody>
-				{Array(10)
-					.fill()
-					.map(() => Math.round(Math.random() * 40))
-					.map((row, index) => (
-						<MovieRow name={row} index={index + 1}></MovieRow>
-					))}
-			</tbody>
-		</Table>
+		<Row>
+			<Table dark>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Movie Name</th>
+						<th>Year </th>
+						<th>Imdb id</th>
+					</tr>
+				</thead>
+				<tbody>
+					{liste.Search ? (
+						liste.Search.map((item, index) => (
+							// <div> loading </div>
+							<MovieRow
+								{...item}
+								index={index + 1}
+								key={item.imdbID}
+							></MovieRow>
+						))
+					) : (
+						<tr> loading </tr>
+					)}
+				</tbody>
+			</Table>
+		</Row>
 	);
 }
