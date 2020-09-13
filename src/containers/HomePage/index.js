@@ -35,7 +35,10 @@ export default function HomePage() {
 		<>
 			<Row>
 				<SearchBar
-					handleUserInput={setUserInput}
+					handleUserInput={(e) => {
+						setUserInput(e);
+						setActivePage(1);
+					}}
 					userInput={user_input}
 				></SearchBar>
 			</Row>

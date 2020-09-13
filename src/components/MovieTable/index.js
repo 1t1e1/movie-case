@@ -4,7 +4,7 @@ import MovieRow from "./MovieRow";
 
 export default function MovieList({ liste }) {
 	useEffect(() => {
-		console.log(liste);
+		// console.log(liste);
 	});
 
 	return (
