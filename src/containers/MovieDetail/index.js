@@ -38,32 +38,3 @@ export default function MovieDetail() {
 		</div>
 	);
 }
-
-// class MovieDetail extends React.Component {
-// 	constructor(props) {
-// 		super(props);
-// 	}
-
-// 	componentDidMount() {
-// 		this.props.getMovieById("tt1690470");
-// 	}
-
-// 	render() {
-// 		console.log("what ");
-// 		console.log(this.props);
-// 		return <h1>movie is loading...</h1>;
-// 	}
-// }
-
-// const mapStateToProps = (state) => {
-// 	return {
-// 		detailMovieData: state.movies.detailMovieData,
-// 		loading: state.movies.loading,
-// 	};
-// };
-
-// const mapDispatchToProps = {
-// 	getMovieById,
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(MovieDetail);
