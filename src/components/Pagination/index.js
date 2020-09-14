@@ -13,13 +13,9 @@ const PaginationComp = () => {
 	const dispatch = useDispatch();
 
 	const [pageCount, setPageCount] = useState(Math.ceil(resultCount));
-	// const [paginationNumber, setPaginationNumber] = useState(
-	// 	pageCount < 3 ? pageCount : 5
-	// );
 
 	useEffect(() => {
 		setPageCount(Math.ceil(resultCount));
-		// setPaginationNumber(pageCount < 3 ? pageCount : 5);
 	}, [resultCount]);
 
 	const handleActivePage = (num) => {

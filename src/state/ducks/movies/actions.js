@@ -27,6 +27,15 @@ const getMovies = (searchInput, activePage = 1, type = "", year) => {
 	};
 };
 
+const setYearFilter = (year) => {
+	return (dispatch) => {
+		dispatch({
+			type: Actions.SET_YEAR_FILTER,
+			payload: ("" + year).slice(0, 4),
+		});
+	};
+};
+
 const setTypeFilter = (type) => {
 	return (dispatch) => {
 		dispatch({
@@ -57,6 +66,14 @@ const setActivePage = (pageNum) => {
 const setSearchTerm = (searchTerm) => {
 	return (dispatch) => {
 		dispatch({
+			type: Actions.SET_YEAR_FILTER,
+			payload: "",
+		});
+		dispatch({
+			type: Actions.SET_TYPE_FILTER,
+			payload: "",
+		});
+		dispatch({
 			type: Actions.SET_SEARCH_TERM,
 			payload: searchTerm,
 		});
@@ -85,4 +102,5 @@ export {
 	setActivePage,
 	setResultCount,
 	setTypeFilter,
+	setYearFilter,
 };

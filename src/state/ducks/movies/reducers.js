@@ -4,6 +4,7 @@ const initialState = {
 	data: [{ title: "first movie" }, { title: "second movie" }],
 	loading: true,
 	typeFilter: "",
+	yearFilter: "",
 	searchTerm: "Pokemon",
 	resultCount: 0,
 	detailMovieData: {},
@@ -45,6 +46,11 @@ function movieReducer(state = initialState, action) {
 				...state,
 				activePage: 1,
 				searchTerm: action.payload,
+			};
+		case Actions.SET_YEAR_FILTER:
+			return {
+				...state,
+				yearFilter: action.payload,
 			};
 		case Actions.SET_TYPE_FILTER:
 			return {

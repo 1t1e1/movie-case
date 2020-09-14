@@ -6,21 +6,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMovies } from "../../state/ducks/movies/actions";
 
 export default function HomePage() {
-	const { movies, loading, searchTerm, activePage, typeFilter } = useSelector(
-		(state) => ({
-			movies: state.movies.data,
-			loading: state.movies.loading,
-			searchTerm: state.movies.searchTerm,
-			activePage: state.movies.activePage,
-			typeFilter: state.movies.typeFilter,
-		})
-	);
+	const {
+		movies,
+		loading,
+		searchTerm,
+		activePage,
+		typeFilter,
+		yearFilter,
+	} = useSelector((state) => ({
+		movies: state.movies.data,
+		loading: state.movies.loading,
+		searchTerm: state.movies.searchTerm,
+		activePage: state.movies.activePage,
+		typeFilter: state.movies.typeFilter,
+		yearFilter: state.movies.yearFilter,
+	}));
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getMovies(searchTerm, activePage, typeFilter, ""));
-	}, [searchTerm, typeFilter]);
+		dispatch(getMovies(searchTerm, activePage, typeFilter, yearFilter));
+	}, [searchTerm, typeFilter, yearFilter]);
 
 	return (
 		<>

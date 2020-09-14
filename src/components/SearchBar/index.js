@@ -62,15 +62,17 @@ export default function SearchBar() {
 								{typeFilter ? typeFilter : "Choose Filter"}
 							</DropdownToggle>
 							<DropdownMenu className="currency-dropdown">
-								{["", "Movie", "Series", "Episode"].map((item) =>
+								{["", "Movie", "Series", "Episode", "Game"].map((item) =>
 									item ? (
 										<DropdownItem
+											key={item}
 											onClick={() => handleClick(item.toLowerCase())}
 										>
 											{item}
 										</DropdownItem>
 									) : (
 										<DropdownItem
+											key={item}
 											onClick={() => handleClick(item.toLowerCase())}
 										>
 											ALL
