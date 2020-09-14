@@ -23,17 +23,6 @@ export default function MovieDetail() {
 	return (
 		<div>
 			<h3>This is Movie Detail</h3>
-			<p> id : {movieid}</p>
-			<p> it must be tt1690470</p>
-			<button
-				onClick={() => {
-					console.log(state);
-					console.log(loading);
-				}}
-			>
-				{" "}
-				click
-			</button>
 			<p>{JSON.stringify(state)}</p>
 		</div>
 	);
