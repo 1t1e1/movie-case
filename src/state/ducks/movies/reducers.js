@@ -3,10 +3,9 @@ import * as Actions from "./types";
 const initialState = {
 	data: [{ title: "first movie" }, { title: "second movie" }],
 	loading: true,
-	filter: "",
+	typeFilter: "",
 	searchTerm: "Pokemon",
-	resultCount: 1,
-	searchByValue: "",
+	resultCount: 0,
 	detailMovieData: {},
 	activePage: 1,
 };
@@ -46,6 +45,11 @@ function movieReducer(state = initialState, action) {
 				...state,
 				activePage: 1,
 				searchTerm: action.payload,
+			};
+		case Actions.SET_TYPE_FILTER:
+			return {
+				...state,
+				typeFilter: action.payload,
 			};
 		default:
 			return state;

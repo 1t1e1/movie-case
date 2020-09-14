@@ -9,12 +9,13 @@ export default function MovieList({ movies, loading }) {
 
 	return (
 		<Row>
-			<Table dark>
+			<Table>
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Movie Name</th>
 						<th>Year </th>
+						<th>Type </th>
 						<th>Imdb id</th>
 					</tr>
 				</thead>

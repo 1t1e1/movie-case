@@ -3,24 +3,36 @@ import Axios from "axios";
 import {
 	api_key,
 	api_url,
-	first_str,
 	search_w_page,
 	search_w_id,
-	first_id,
+	search_w_type,
+	search_w_year,
 } from "../../../constant";
 
-const getMovies = (searchInput, activePage = 1) => {
+const getMovies = (searchInput, activePage = 1, type = "", year) => {
 	return (dispatch) => {
 		dispatch({
 			type: Actions.LOAD_MOVIES,
 		});
-		Axios.get(`${api_url}${api_key}${searchInput}${search_w_page}${activePage}`)
+		// series,movie
+		Axios.get(
+			`${api_url}${api_key}${searchInput}${search_w_page}${activePage}${search_w_type}${type}${search_w_year}${year}`
+		)
 			.then((result) => {
 				dispatch({ type: Actions.SET_MOVIES, payload: result.data });
 			})
 			.catch((error) => {
 				console.log(error);
 			});
+	};
+};
+
+const setTypeFilter = (type) => {
+	return (dispatch) => {
+		dispatch({
+			type: Actions.SET_TYPE_FILTER,
+			payload: type,
+		});
 	};
 };
 
@@ -72,4 +84,5 @@ export {
 	setSearchTerm,
 	setActivePage,
 	setResultCount,
+	setTypeFilter,
 };

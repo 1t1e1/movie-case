@@ -14,6 +14,3 @@ yarn start
 - [ ] filter
 
   - Kullanıcı sadece istediği yılda vizyona girmiş filmleri listeleyebilmelidir.
-  - Kullanıcı isterse sadece filmleri, sadece dizileri ya da sadece dizi bölümlerini aratabilmelidir
-
-- [ ] search button

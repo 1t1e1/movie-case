@@ -36,9 +36,9 @@ export default function MovieDetail() {
 					<Row>
 						<p> Runtime : {Runtime}</p>
 					</Row>
-					<Row>
+					{/* <Row>
 						<p> IMDB Rated : {Ratings[0]["Value"]}</p>
-					</Row>
+					</Row> */}
 					<Row>
 						<p> Genre : {Genre}</p>
 					</Row>
