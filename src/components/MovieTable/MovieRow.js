@@ -1,5 +1,6 @@
 import React from "react";
 import { Col } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default function MovieRow({ Title, Year, imdbID, index }) {
 	return (
@@ -7,7 +8,9 @@ export default function MovieRow({ Title, Year, imdbID, index }) {
 			<th scope="row">{index}</th>
 			<td>{Title}</td>
 			<td>{Year}</td>
-			<td>{imdbID}</td>
+			<td>
+				<Link to="/detail/tt1690470">{imdbID}</Link>
+			</td>
 		</tr>
 	);
 }

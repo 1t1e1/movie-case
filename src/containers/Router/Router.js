@@ -12,9 +12,6 @@ export default function MyRouter() {
 							<Link to="/">Home</Link>
 						</li>
 						<li>
-							<Link to="/detail/tt1690470">movie detail</Link>
-						</li>
-						<li>
 							<Link to="/will-not-match">Not found</Link>
 						</li>
 					</ul>
