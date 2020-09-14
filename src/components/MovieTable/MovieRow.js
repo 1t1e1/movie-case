@@ -5,11 +5,11 @@ export default function MovieRow({ Title, Year, imdbID, index }) {
 	return (
 		<tr>
 			<th scope="row">{index}</th>
-			<td>{Title}</td>
-			<td>{Year}</td>
 			<td>
-				<Link to={`/detail/${imdbID}`}>{imdbID}</Link>
+				<Link to={`/detail/${imdbID}`}>{Title}</Link>
 			</td>
+			<td>{Year}</td>
+			<td>{imdbID}</td>
 		</tr>
 	);
 }

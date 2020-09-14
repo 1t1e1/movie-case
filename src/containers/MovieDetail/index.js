@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieById } from "../../state/ducks/movies/actions";
+import { Row, Col } from "reactstrap";
 
 export default function MovieDetail() {
 	let { movieid } = useParams();
@@ -20,10 +21,35 @@ export default function MovieDetail() {
 		return <div> loading </div>;
 	}
 
+	const { Title, Poster, Runtime, Genre, Director, Actors, Ratings } = state;
+
 	return (
-		<div>
-			<h3>This is Movie Detail</h3>
-			<p>{JSON.stringify(state)}</p>
-		</div>
+		<>
+			<Row>
+				<Col sm="4" xs="12">
+					<img src={Poster} className="img-fluid" alt="Movie Poster"></img>
+				</Col>
+				<Col sm="7" offset-sm="0">
+					<Row>
+						<h3 className="text-end">{Title}</h3>
+					</Row>
+					<Row>
+						<p> Runtime : {Runtime}</p>
+					</Row>
+					<Row>
+						<p> IMDB Rated : {Ratings[0]["Value"]}</p>
+					</Row>
+					<Row>
+						<p> Genre : {Genre}</p>
+					</Row>
+					<Row>
+						<p> Director : {Director}</p>
+					</Row>
+					<Row>
+						<p> Actors : {Actors}</p>
+					</Row>
+				</Col>
+			</Row>
+		</>
 	);
 }

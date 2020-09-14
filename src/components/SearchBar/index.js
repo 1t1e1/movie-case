@@ -26,7 +26,6 @@ export default function SearchBar() {
 					<Button color="secondary">filter</Button>
 				</InputGroupAddon>
 			</InputGroup>
-			<p> Search term is {searchTerm}</p>
 		</Col>
 	);
 }

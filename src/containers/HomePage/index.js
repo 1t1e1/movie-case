@@ -35,9 +35,6 @@ export default function HomePage() {
 			<Row>
 				<PaginationComp />
 			</Row>
-			<Row>
-				<Col> result count : {resultCount} nerede</Col>
-			</Row>
 		</>
 	);
 }
