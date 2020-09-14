@@ -1,47 +1,78 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 
-const PaginationComp = ({ pageIndex, pageCount, handleActivePage }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { setActivePage } from "../../state/ducks/movies/actions";
+
+const PaginationComp = () => {
+	const { activePage, resultCount } = useSelector((state) => ({
+		activePage: state.movies.activePage,
+		resultCount: state.movies.resultCount,
+	}));
+
+	const dispatch = useDispatch();
+
+	const [pageCount, setPageCount] = useState(Math.ceil(resultCount));
+	// const [paginationNumber, setPaginationNumber] = useState(
+	// 	pageCount < 3 ? pageCount : 5
+	// );
+
+	useEffect(() => {
+		setPageCount(Math.ceil(resultCount));
+		// setPaginationNumber(pageCount < 3 ? pageCount : 5);
+	}, [resultCount]);
+
+	const handleActivePage = (num) => {
+		if (num === "last") {
+			dispatch(setActivePage(pageCount));
+		} else if (num === "first") {
+			dispatch(setActivePage(1));
+		} else {
+			dispatch(setActivePage(num));
+		}
+	};
+
 	return (
 		<Pagination aria-label="Page navigation example">
-			<PaginationItem disabled={1 === pageIndex}>
+			<PaginationItem disabled={1 === activePage}>
 				<PaginationLink
 					first
 					href="#"
 					onClick={() => handleActivePage("first")}
 				/>
 			</PaginationItem>
-			<PaginationItem disabled={1 === pageIndex}>
+			<PaginationItem disabled={1 === activePage}>
 				<PaginationLink
 					previous
 					href="#"
-					onClick={() => handleActivePage(pageIndex - 1)}
+					onClick={() => handleActivePage(activePage - 1)}
 				/>
 			</PaginationItem>
+
 			{Array(5)
 				.fill()
-				.map((_, i) => i + pageIndex - 2)
-				.map((item, index) => {
+				.map((_, i) => i + activePage - 2)
+				.map((item) => {
 					if (item < 1) return null;
 					if (item > pageCount) return null;
 					return (
 						<PageItem
 							text={item}
-							active={item === pageIndex}
+							active={item === activePage}
 							clickHandle={() => {
 								handleActivePage(item);
 							}}
 						></PageItem>
 					);
 				})}
-			<PaginationItem disabled={pageCount === pageIndex}>
+			<PaginationItem disabled={pageCount === activePage}>
 				<PaginationLink
 					next
 					href="#"
-					onClick={() => handleActivePage(pageIndex + 1)}
+					onClick={() => handleActivePage(activePage + 1)}
 				/>
 			</PaginationItem>
-			<PaginationItem disabled={pageCount === pageIndex}>
+			<PaginationItem disabled={pageCount === activePage}>
 				<PaginationLink
 					last
 					href="#"

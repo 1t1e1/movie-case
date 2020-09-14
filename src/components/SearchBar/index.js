@@ -1,24 +1,24 @@
 import React from "react";
-import {
-	Row,
-	Col,
-	Input,
-	InputGroup,
-	InputGroupAddon,
-	Button,
-} from "reactstrap";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faSearch, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { Col, Input, InputGroup, InputGroupAddon, Button } from "reactstrap";
 
-export default function SearchBar({ handleUserInput, userInput }) {
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchTerm } from "../../state/ducks/movies/actions";
+
+export default function SearchBar() {
+	const { searchTerm } = useSelector((state) => ({
+		searchTerm: state.movies.searchTerm,
+	}));
+
+	const dispatch = useDispatch();
+
 	return (
 		<Col className="p-4">
 			<InputGroup>
 				<Input
 					type="text"
-					placeholder={userInput}
+					value={searchTerm}
 					onChange={(e) => {
-						handleUserInput(e.target.value);
+						dispatch(setSearchTerm(e.target.value.trim()));
 					}}
 				/>
 				<InputGroupAddon addonType="append">
@@ -26,7 +26,7 @@ export default function SearchBar({ handleUserInput, userInput }) {
 					<Button color="secondary">filter</Button>
 				</InputGroupAddon>
 			</InputGroup>
-			<p> Search term is {userInput}</p>
+			<p> Search term is {searchTerm}</p>
 		</Col>
 	);
 }

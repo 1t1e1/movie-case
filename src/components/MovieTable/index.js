@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Table, ListGroupItem, Row } from "reactstrap";
+import { Table, Row } from "reactstrap";
 import MovieRow from "./MovieRow";
 
-export default function MovieList({ liste }) {
-	useEffect(() => {
-		// console.log(liste);
-	});
+export default function MovieList({ movies, loading }) {
+	useEffect(() => {});
+
+	if (loading) return <h3>loading</h3>;
 
 	return (
 		<Row>
@@ -19,8 +19,8 @@ export default function MovieList({ liste }) {
 					</tr>
 				</thead>
 				<tbody>
-					{liste.Search ? (
-						liste.Search.map((item, index) => (
+					{movies ? (
+						movies.map((item, index) => (
 							// <div> loading </div>
 							<MovieRow
 								{...item}
