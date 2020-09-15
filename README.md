@@ -7,8 +7,6 @@ yarn start
 
 ### Bugs
 
-- [ ] when result less 20, pageCount look like over 20.
-  - [ ] use pagination from npm react-paginate
 - [ ] something detail page down because rating.
 
 ### Missing

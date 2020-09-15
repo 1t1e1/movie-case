@@ -14,6 +14,9 @@ const PaginationComp = () => {
 
 	const [pageCount, setPageCount] = useState(Math.ceil(resultCount));
 
+	const pageArray = [];
+	for (let i = 1; i <= pageCount; i++) pageArray.push(i);
+
 	useEffect(() => {
 		setPageCount(Math.ceil(resultCount));
 	}, [resultCount]);
@@ -45,13 +48,9 @@ const PaginationComp = () => {
 				/>
 			</PaginationItem>
 
-			{Array(5)
-				.fill()
-				.map((_, i) => i + activePage - 2)
-				.map((item) => {
-					if (item < 1) return null;
-					if (item > pageCount) return null;
-					return (
+			{pageArray.map(
+				(item) =>
+					Math.abs(item - activePage) < 4 && (
 						<PageItem
 							text={item}
 							active={item === activePage}
@@ -59,8 +58,8 @@ const PaginationComp = () => {
 								handleActivePage(item);
 							}}
 						></PageItem>
-					);
-				})}
+					)
+			)}
 			<PaginationItem disabled={pageCount === activePage}>
 				<PaginationLink
 					next
