@@ -21,7 +21,7 @@ export default function MovieDetail() {
 		return <div> loading </div>;
 	}
 
-	const { Title, Poster, Runtime, Genre, Director, Actors, Ratings } = state;
+	const { Title, Poster, Runtime, Genre, Director, Actors, imdbRating } = state;
 
 	return (
 		<>
@@ -36,9 +36,9 @@ export default function MovieDetail() {
 					<Row>
 						<p> Runtime : {Runtime}</p>
 					</Row>
-					{/* <Row>
-						<p> IMDB Rated : {Ratings[0]["Value"]}</p>
-					</Row> */}
+					<Row>
+						<p> IMDB Rated :{imdbRating}</p>
+					</Row>
 					<Row>
 						<p> Genre : {Genre}</p>
 					</Row>

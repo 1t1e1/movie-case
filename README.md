@@ -5,8 +5,8 @@ yarn install
 yarn start
 ```
 
-### Bugs
-
-- [ ] something detail page down because rating.
-
 ### Missing
+
+- prototype
+- write test
+- write documentation
