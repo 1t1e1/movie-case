@@ -52,6 +52,7 @@ const PaginationComp = () => {
 				(item) =>
 					Math.abs(item - activePage) < 4 && (
 						<PageItem
+							key={item}
 							text={item}
 							active={item === activePage}
 							clickHandle={() => {

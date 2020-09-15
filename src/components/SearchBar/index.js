@@ -1,41 +1,38 @@
 import React, { useState } from "react";
-import {
-	Col,
-	Input,
-	InputGroup,
-	InputGroupAddon,
-	Button,
-	ButtonDropdown,
-	DropdownItem,
-	DropdownMenu,
-	DropdownToggle,
-	Dropdown,
-} from "reactstrap";
+import { Col, Input, InputGroup, InputGroupAddon, Button } from "reactstrap";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
 	setSearchTerm,
 	setTypeFilter,
+	setYearFilter,
 	getMovies,
 } from "../../state/ducks/movies/actions";
+import MyDropDown from "./MyDropDown";
 
 export default function SearchBar() {
-	const { searchTerm, typeFilter, activePage } = useSelector((state) => ({
-		searchTerm: state.movies.searchTerm,
-		typeFilter: state.movies.typeFilter,
-		activePage: state.movies.activePage,
-	}));
+	const { searchTerm, typeFilter, yearFilter, activePage } = useSelector(
+		(state) => ({
+			searchTerm: state.movies.searchTerm,
+			typeFilter: state.movies.typeFilter,
+			yearFilter: state.movies.yearFilter,
+			activePage: state.movies.activePage,
+		})
+	);
 
 	const dispatch = useDispatch();
 
-	const [dropDownOpen, setDropDownOpen] = useState(false);
-	const toggle = () => {
-		setDropDownOpen(!dropDownOpen);
+	const handleClickType = (type) => {
+		dispatch(setTypeFilter(type.toLowerCase()));
 	};
 
-	const handleClick = (type) => {
-		dispatch(setTypeFilter(type));
+	const handleClickYear = (year) => {
+		dispatch(setYearFilter("" + year));
 	};
+
+	const types = ["", "Movie", "Series", "Episode", "Game"];
+	const years = [""];
+	for (let i = 2020; i > 1920; i--) years.push(i);
 
 	return (
 		<Col className="p-4">
@@ -56,32 +53,19 @@ export default function SearchBar() {
 					>
 						search
 					</Button>
-					<ButtonDropdown>
-						<Dropdown isOpen={dropDownOpen} toggle={toggle}>
-							<DropdownToggle color="secondary" className="dropdown-toggle">
-								{typeFilter ? typeFilter : "Choose Filter"}
-							</DropdownToggle>
-							<DropdownMenu className="currency-dropdown">
-								{["", "Movie", "Series", "Episode", "Game"].map((item) =>
-									item ? (
-										<DropdownItem
-											key={item}
-											onClick={() => handleClick(item.toLowerCase())}
-										>
-											{item}
-										</DropdownItem>
-									) : (
-										<DropdownItem
-											key={item}
-											onClick={() => handleClick(item.toLowerCase())}
-										>
-											ALL
-										</DropdownItem>
-									)
-								)}
-							</DropdownMenu>
-						</Dropdown>
-					</ButtonDropdown>
+					<MyDropDown
+						name="Type"
+						handleClick={handleClickType}
+						items={types}
+						value={typeFilter}
+					></MyDropDown>
+					<MyDropDown
+						className="long-list"
+						name="Year"
+						handleClick={handleClickYear}
+						items={years}
+						value={yearFilter}
+					></MyDropDown>
 				</InputGroupAddon>
 			</InputGroup>
 		</Col>
